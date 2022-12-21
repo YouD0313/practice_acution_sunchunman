@@ -1,0 +1,166 @@
+input, textarea {
+    appearance: none;    
+    -webkit-appearance: none;    
+    -webkit-border-radius: 0; 
+}
+.textbox input[type="text"]:focus, .textbox input[type="password"]:focus{
+    /* border-color: #A0EC00;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(176, 233, 102, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(176, 233, 102, 0.6); */
+    border-color: rgb(173, 22, 22);
+    -webkit-box-shadow: inset 0 1px 1px rgba(173, 22, 22, .075), 0 0 8px rgba(255, 124, 124, 0.6);
+    box-shadow: inset 0 1px 1px rgba(173, 22, 22, .075), 0 0 8px rgba(255, 124, 124, 0.6);
+}
+.treeDefault input[type="text"]:focus, .treeStd input[type="text"]:focus{
+    border-color: rgb(173, 22, 22);
+    -webkit-box-shadow: inset 0 1px 1px rgba(173, 22, 22, .075), 0 0 8px rgba(255, 124, 124, 0.6);
+    box-shadow: inset 0 1px 1px rgba(173, 22, 22, .075), 0 0 8px rgba(255, 124, 124, 0.6);
+}
+.textbox, .treeDefault, .treeStd{
+    position: relative;
+}
+.textbox label, .treeDefault label , .treeStd label{ 
+    position: absolute;
+    width: 100%;
+    padding: 1.5rem;
+    color: #999;
+    cursor: text; 
+} 
+.textbox input[type="text"], .textbox input[type="password"], .treeDefault input[type="text"], .treeStd input[type="text"]{      
+    padding: 1.1rem;
+    border: 1px solid #e5e5e5;
+    background: #f4f4f4;    
+    border-radius: 0; /* iSO 둥근모서리 제거 */ 
+    outline-style: none;
+}
+input[type="radio"]{
+    display: none;
+}
+input[type="radio"] + label {
+    position: relative;
+    top: -1.3rem;
+    left: -.8rem;
+    cursor: pointer;
+    display: inline-block;
+}
+input[type="radio"]:checked + label, input[type="radio"] + label {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+input[type="radio"]:checked + label:before, input[type="radio"] + label:before {
+    content: '';
+    position: absolute;
+    left: .1rem;
+    top: .1rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    border:1px solid #bbb;
+    border-radius: 100%;
+    background: #f2f2f2;
+}
+input[type="radio"]:checked + label:before {
+    border:1px solid  #f18686;
+    border-radius: 100%;
+}
+input[type="radio"]:checked + label:after, input[type="radio"] + label:after {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    background: #d42222;
+    position: absolute;
+    top: .4rem;;
+    left: 0.4rem;;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all .35s ease;
+}
+input[type="radio"] + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+input[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+/* 셀렉트메뉴 */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none;
+}
+select::-ms-expand{
+    /* 화살표 없애기 for IE10, 11*/ 
+    display:none;
+}
+.selectbox, .selectOpen { 
+    position: relative;
+    background: #f2f2f2;
+    z-index: 1;
+}
+.selectbox.focus, .selectOpen.focus {
+    border-color: rgb(173, 22, 22);
+    -webkit-box-shadow: inset 0 1px 1px rgba(173, 22, 22, .075), 0 0 8px rgba(255, 124, 124, 0.6);
+    box-shadow: inset 0 1px 1px rgba(173, 22, 22, .075), 0 0 8px rgba(255, 124, 124, 0.6);
+}
+/* .selectbox:before { 
+    content: '\f107';
+    font-family: fontAwesome;
+    position: absolute;
+    top: 1.3rem;
+    right: 2rem; 
+    width: 0;
+    height: 0; 
+}  */
+.selectbox label{ 
+    position: absolute;    
+    width: 100%;
+    line-height: 3.6rem;
+    padding: 0 1.5rem;
+    z-index: -1; /* IE8에서 label이 위치한 곳이 클릭되지 않는 것 해결 */   
+}
+.selectbox select{
+    width: 100%;
+    height: 3.6rem;
+    padding: 0 1.5rem; /* 여백과 높이 결정 */
+    border: 0; 
+    opacity: 0; /* 숨기기 */ 
+    filter:alpha(opacity=0); /* IE8 숨기기 */ 
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+    -moz-appearance: none; 
+    appearance: none; 
+}
+.selectbox select option{
+    font-size: 1.3rem;
+    color: var(--sub-txt-color);
+    background: #f2f2f2;
+}
+
+.selectOpen label{ 
+    position: absolute;    
+    width: 100%;
+    text-align: left;
+    line-height: 3rem;
+    padding: 0 1rem;
+    z-index: -1; /* IE8에서 label이 위치한 곳이 클릭되지 않는 것 해결 */   
+}
+.selectOpen select{
+    width: 100%;
+    height: 3rem;
+    font-family: 'Roboto';
+    padding: 0 1rem; /* 여백과 높이 결정 */
+    border: 0; 
+    opacity: 0; /* 숨기기 */ 
+    filter:alpha(opacity=0); /* IE8 숨기기 */ 
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+    -moz-appearance: none; 
+    appearance: none; 
+}
+.selectOpen select option{
+    font-size: 1.2rem;
+    color: var(--sub-txt-color);
+    background: #f2f2f2;
+} 
+

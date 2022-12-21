@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>경매준비관리 > 경매접수관리</title>
+  <link rel="stylesheet" type="text/css" href="./css/default.css">
+  <link rel="stylesheet" type="text/css" href="./css/auction_list_result.css">
+  <link rel="stylesheet" type="text/css" href="./css/formType.css">
+  <script
+  src="https://code.jquery.com/jquery-3.6.2.js"
+  integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4="
+  crossorigin="anonymous"></script>
+  <script src="move.js" defer></script>
+  <style>
+    .order_change {
+      position: fixed;
+      top: 215px;
+      left: 50%;
+      padding: 1rem 2rem;
+      border: 1px solid #ccc;
+      border-radius: 1rem;
+      background: white;
+      z-index: 100;
+      transform: translateX(470px);
+      box-shadow: 0 0 .5rem .5rem rgba(0, 0, 0, .1);
+    }
+
+    .order_change>div>span {
+      display: inline-block;
+      padding: 1rem 0 1rem 1rem;
+      font-size: 1.4rem;
+    }
+
+    .order_change img {
+      position: relative;
+      top: .3rem;
+    }
+
+    input[type="checkbox"] {
+      position: relative;
+      ;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: #f4f4f4;
+      border: 1px solid #ccc;
+      border-radius: .2rem;
+      cursor: pointer;
+      height: 2rem;
+      width: 2rem;
+      top: .2rem;
+      outline: none;
+
+    }
+
+    input[type="checkbox"]::after {
+      border: 2px solid rgb(180, 0, 0);
+      border-width: 0 .1rem .1rem 0;
+      content: '';
+      display: none;
+      height: 40%;
+      left: 40%;
+      position: absolute;
+      top: 20%;
+      transform: rotate(45deg);
+      width: 25%;
+    }
+
+    input[type="checkbox"]:checked {
+      border: 1px solid rgb(180, 0, 0);
+    }
+
+    input[type="checkbox"]:checked::after {
+      display: block;
+    }
+  </style>
+<body>
+  <div>
+    <div class="content">
+      <form name="listMoveFrm" id="listMoveFrm" method="post" action="auctionMakeProc.php" target="list_ifr">
+        <div class="search">
+          <div class="selectbox" style="width:150px;">
+            <label for="auctionRegDate">
+              2022-12-17
+            </label>
+            <ion-icon name="chevron-down-outline" class="arrowIcon" style="left:120px"></ion-icon>
+            <select id="auctionRegDate" name="auctionRegDate" style="width:150px;">
+              <option value="all">경매일 선택</option>
+              <option value="2022-12-17" selected>2022-12-17</option>
+            </select>
+          </div>
+          <div class="selectbox">
+            <label for="sort">실시간경매</label>
+            <ion-icon name="chevron-down-outline" class="arrowIcon"></ion-icon>
+            <select id="auctionMode">
+              <option selected value="all">경매전체</option>
+              <option value="1">포지경매</option>
+              <option value="2">납품경매</option>
+              <option value="3">특수목경매</option>
+              <option value="4" selected>실시간경매</option>
+            </select>
+          </div>
+          <div class="default_Btn find">검색</div>
+          <div class="default_Btn find" id="listSave">저장</div>
+          <div class="default_Btn find">선택삭제</div>
+        </div>
+        <div class="table">
+          <table>
+            <thead>
+              <tr id="title">
+                <th>삭제<br>선택</th>
+                <th>경매번호</th>
+                <th>경매종류</th>
+                <th>신청인</th>
+                <th>수종</th>
+                <th>수량</th>
+                <th>규격</th>
+                <th>예정가</th>
+                <th width=20%>비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="Tbody_0" style="text-align:center">
+                <td><input type="hidden" id="chkbox_0" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1758"><input type="checkbox" class="delChk" name="delData[]" value="1758" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">순천만가든마켓</div>
+                </td>
+                <td>독일아이비</td>
+                <td>1</td>
+                <td>0.3H 0.3W </td>
+                <td>26,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_1" style="text-align:center">
+                <td><input type="hidden" id="chkbox_1" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1755"><input type="checkbox" class="delChk" name="delData[]" value="1755" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">순천만가든마켓</div>
+                </td>
+                <td>제라늄</td>
+                <td>1</td>
+                <td>0.3H 0.3W </td>
+                <td>20,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_2" style="text-align:center">
+                <td><input type="hidden" id="chkbox_2" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1756"><input type="checkbox" class="delChk" name="delData[]" value="1756" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">비봉농원</div>
+                </td>
+                <td>제라늄</td>
+                <td>1</td>
+                <td>0.3H 0.4W </td>
+                <td>13,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_3" style="text-align:center">
+                <td><input type="hidden" id="chkbox_3" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1759"><input type="checkbox" class="delChk" name="delData[]" value="1759" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">순천만가든마켓</div>
+                </td>
+                <td>백신환선인장</td>
+                <td>1</td>
+                <td>0.8H 0.5W </td>
+                <td>75,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_4" style="text-align:center">
+                <td><input type="hidden" id="chkbox_4" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1760"><input type="checkbox" class="delChk" name="delData[]" value="1760" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">순천만가든마켓</div>
+                </td>
+                <td>브레이니아</td>
+                <td>1</td>
+                <td>0.3H 0.3W </td>
+                <td>25,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_5" style="text-align:center">
+                <td><input type="hidden" id="chkbox_5" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1747"><input type="checkbox" class="delChk" name="delData[]" value="1747" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">순천만가든마켓</div>
+                </td>
+                <td>베고니아(렉스</td>
+                <td>1</td>
+                <td>0.2H 0.2W </td>
+                <td>10,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_6" style="text-align:center">
+                <td><input type="hidden" id="chkbox_6" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1740"><input type="checkbox" class="delChk" name="delData[]" value="1740" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">순천만가든마켓</div>
+                </td>
+                <td>포인세티아</td>
+                <td>1</td>
+                <td>08H 0.5W </td>
+                <td>35,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_7" style="text-align:center">
+                <td><input type="hidden" id="chkbox_7" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1764"><input type="checkbox" class="delChk" name="delData[]" value="1764" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">서승기</div>
+                </td>
+                <td>로즈마리</td>
+                <td>1</td>
+                <td>0.5H 0.5W </td>
+                <td>13,500</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_8" style="text-align:center">
+                <td><input type="hidden" id="chkbox_8" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1752"><input type="checkbox" class="delChk" name="delData[]" value="1752" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">순천만가든마켓</div>
+                </td>
+                <td>독구리난</td>
+                <td>1</td>
+                <td>0.3H 0.3W </td>
+                <td>20,000</td>
+                <td></td>
+              </tr>
+              <tr id="Tbody_9" style="text-align:center">
+                <td><input type="hidden" id="chkbox_9" value="0" /><input type="hidden" name="auctionList[]"
+                    value="1748"><input type="checkbox" class="delChk" name="delData[]" value="1748" /></td>
+                <td></td>
+                <td>실시간</td>
+                <td>
+                  <div class="cell">정상래</div>
+                </td>
+                <td>블루아이스</td>
+                <td>1</td>
+                <td>1.5H 0.4W </td>
+                <td>160,000</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="order_change">
+          <div><img src="./img/arrow_up.png"><span>맨위</span></div>
+          <div><img src="./img/arrow_up01.png"><span>위로</span></div>
+          <div><img src="./img/arrow_down01.png"><span>아래</span></div>
+          <div><img src="./img/arrow_down.png"><span>맨아래</span></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

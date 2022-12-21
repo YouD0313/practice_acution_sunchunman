@@ -1,0 +1,130 @@
+/* 검색창시작 */
+.search {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+	height: 8rem;
+	padding: 2rem 0;
+}
+.search > div {
+	font-size: 1.3rem;
+}
+ion-icon {
+	position: absolute;
+	font-size: 1.8rem;
+	color: #999;
+}
+.searchIcon {
+	top: 1rem;
+	left: 37.5rem;
+}
+.textbox input {
+	width: 17.8rem;
+	height: 3.8rem;
+}
+.selectbox,
+.selectbox select {
+	width: 12rem;
+	height: 3.8rem;
+	font-size: 1.3rem;
+	color: var(--sub-txt-color);
+	border: 1px solid #ddd;
+}
+.arrowIcon {
+	top: 1rem;
+	left: 9.5rem;
+}
+.selectOpen select {
+	width: 7rem;
+	border: 1px solid #ddd;
+}
+.selectOpen {
+	width: 100%;
+	border: 1px solid #ddd;
+}
+.arrowIcon01 {
+	top: 0.7rem;
+	left: 3.7rem;
+}
+input::placeholder {
+	letter-spacing: -0.1rem;
+}
+.default_Btn {
+	width: 8rem;
+	padding: 1rem 1.5rem;
+	border: 1px solid #ddd;
+	color: #fff;
+	text-align: center;
+	cursor: pointer;
+}
+.default_Btn.find {
+	background: var(--select-txt-color);
+}
+/* 검색창시작 */
+/* 테이블 */
+.table {
+	display: table;
+	width: 100%;
+	font-size: 1.2rem;
+	text-align: center;
+	color: var(--sub-txt-color);
+}
+.table table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.table tr {
+	display: table-row;
+}
+.table td,
+.table th {
+	display: table-cell;
+	padding: 1rem;
+}
+.table th {
+	font-weight: 400;
+	color: #fff;
+	background: #888;
+	border: 1px solid #999;
+}
+.table tr:nth-child(n + 1) td {
+	border: 1px solid #ddd;
+}
+.brief {
+	display: grid;
+	grid-template-columns: 1fr 7.5rem;
+	gap: 0.3rem 1rem;
+}
+.brief > span:nth-child(2) {
+	grid-row: span 2;
+	text-align: right;
+}
+.brief span {
+	text-align: left;
+}
+.manage_Btn {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-radius: 0.2rem;
+	background: #ddd;
+	cursor: pointer;
+}
+.manage_Btn.detail {
+	top: 50%;
+	transform: translateY(25%);
+	margin-left: 1rem;
+}
+.num {
+	position: relative;
+	font-family: 'Roboto';
+	line-height: 2rem;
+	top: 0.2rem;
+}
+/* 테이블 */
+/* 컨텐츠부분 */
+
+/* move.js */
+tr.backColor {
+	background-color: rgba(185, 240, 195, 0.544);
+}
